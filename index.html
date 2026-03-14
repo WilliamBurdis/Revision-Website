@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GradeForge | GitHub Edition</title>
+    <title>GradeForge | Study Suite</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,43 +23,37 @@
             </div>
             <div class="subject-card" onclick="loadSubject('math')">
                 <h3>📐 Mathematics</h3>
-                <p>Expanded Question Bank</p>
+                <p>Algebra & Geometry</p>
             </div>
         </div>
     </section>
 
     <section id="study" class="hidden">
-        <button class="primary-btn" onclick="goHome()">← Back</button>
-        <h1 id="sub-title"></h1>
+        <button class="primary-btn" onclick="goHome()">← Back to Dashboard</button>
+        <h1 id="sub-title">Subject Title</h1>
         
         <div class="tabs">
             <button id="t-notes" class="tab-btn active" onclick="setTab('notes')">Notes</button>
-            <button id="t-quiz" class="tab-btn" onclick="setTab('quiz')">Quiz</button>
             <button id="t-flash" class="tab-btn" onclick="setTab('flash')">Flashcards</button>
         </div>
 
         <div id="v-notes" class="content-box">
-            <div id="note-body"></div>
-        </div>
-
-        <div id="v-quiz" class="content-box hidden">
-            <h3 id="q-text"></h3>
-            <div id="q-options"></div>
-            <p id="q-feedback"></p>
-            <button id="next-btn" class="primary-btn hidden" onclick="nextQuestion()">Next Question</button>
+            <div id="note-body">Select a subject to see your notes.</div>
         </div>
 
         <div id="v-flash" class="content-box hidden">
             <div class="flashcard-box">
                 <div class="card-part front-part">
                     <small>QUESTION</small>
-                    <div id="f-front">Select a subject...</div>
+                    <div id="f-front">Loading cards...</div>
                 </div>
+                
                 <div class="card-part back-part" id="f-back-wrapper" style="display:none;">
                     <small>ANSWER</small>
                     <div id="f-back"></div>
                 </div>
             </div>
+
             <div class="flash-controls">
                 <button class="primary-btn" id="reveal-btn" onclick="toggleAnswer()">Show Answer</button>
                 <button class="primary-btn next-btn" onclick="handleNextCard()">Next Card →</button>
