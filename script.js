@@ -3,39 +3,31 @@ const database = {
         title: "English Eduqas Prep", 
         notes: `
             <h3>Eduqas Component 2: Practice</h3>
-            <p><i>19th & 21st Century Non-Fiction</i></p>
-            <div class="exam-box">
-                <span class="exam-tag">Component 2 Q1</span>
-                <b>Q (4 marks):</b> List four things you learn about the writer's attitude in lines 1-15.
-            </div>
-            <div class="exam-box">
-                <span class="exam-tag">Component 2 Q3</span>
-                <b>Q (10 marks):</b> Compare the writers' views on education in Text A and Text B.
-            </div>
+            <div class="exam-box"><span class="exam-tag">Comparison 10-Marker</span><b>Q:</b> Compare the writers' views on education in Text A and Text B.</div>
+            <div class="exam-box"><span class="exam-tag">Transactional Writing</span><b>Task:</b> Write a formal letter to your MP about local pollution.</div>
         `, 
         file: "english.md" 
     },
-    math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", file: "maths.md" },
     sci: { 
         title: "Combined Science (Edexcel)", 
         notes: `
-            <h3>Edexcel Exam Style Questions</h3>
-            <div class="exam-box">
-                <span class="exam-tag">Biology: 6-Marker</span>
-                <b>Q:</b> Explain how the structure of a root hair cell is adapted to its function. (6 marks)
-            </div>
-            <div class="exam-box">
-                <span class="exam-tag">Chemistry: 4-Marker</span>
-                <b>Q:</b> Describe the test for chlorine gas and the observed result. (4 marks)
-            </div>
-            <div class="exam-box">
-                <span class="exam-tag">Physics: 6-Marker</span>
-                <b>Q:</b> Explain the difference between contamination and irradiation. (6 marks)
-            </div>
+            <h3>Edexcel Exam Questions</h3>
+            <div class="exam-box"><span class="exam-tag">Bio: Microscopy</span><b>Q:</b> Describe how to use a light microscope to observe cells. (6 marks)</div>
+            <div class="exam-box"><span class="exam-tag">Chem: Titration</span><b>Q:</b> Describe the steps to perform an accurate titration. (6 marks)</div>
+            <div class="exam-box"><span class="exam-tag">Phys: Radioactivity</span><b>Q:</b> Explain how the atomic model changed from Dalton to Bohr. (6 marks)</div>
         `, 
         file: "science.md" 
     },
-    hist: { title: "History", notes: "Medicine Through Time, Weimar & Nazi Germany.", file: "history.md" },
+    hist: { 
+        title: "OCR B History", 
+        notes: `
+            <h3>OCR B Key Topics</h3>
+            <p>Topics included: The Normans, The Vikings, Nazi Germany, and Crime & Punishment.</p>
+            <div class="exam-box"><span class="exam-tag">History Skill</span><b>Tip:</b> Always use the "PEEL" structure for 9-mark and 18-mark questions.</div>
+        `, 
+        file: "history.md" 
+    },
+    math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", file: "maths.md" },
     geo: { title: "Geography", notes: "Natural Hazards, Urban Issues, UK Landscapes.", file: "geography.md" },
     span: { title: "Spanish", notes: "Identity, Culture, Holidays, and Study.", file: "spanish.md" },
     dra: { title: "Drama", notes: "Blood Brothers, DNA, Live Theatre Review.", file: "drama.md" },
