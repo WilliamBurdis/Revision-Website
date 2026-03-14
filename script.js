@@ -24,7 +24,8 @@ function toggleTheme() {
 
 function loadSubject(key) {
     currentKey = key;
-    qIdx = 0; fIdx = 0;
+    qIdx = 0; 
+    fIdx = 0; // Reset flashcard counter to 0
     document.getElementById('home').classList.add('hidden');
     document.getElementById('study').classList.remove('hidden');
     document.getElementById('sub-title').innerText = database[key].title;
@@ -47,12 +48,13 @@ function setTab(type) {
     document.getElementById('t-' + type).classList.add('active');
 }
 
-// QUIZ LOGIC
+// --- QUIZ LOGIC ---
 function renderQuestion() {
     const q = database[currentKey].questions[qIdx];
     document.getElementById('q-text').innerText = q.q;
     const container = document.getElementById('q-options');
     container.innerHTML = "";
+    document.getElementById('q-feedback').innerText = ""; // Clear old feedback
     q.o.forEach((opt, i) => {
         const b = document.createElement('button');
         b.className = "quiz-opt"; b.innerText = opt;
@@ -69,7 +71,7 @@ function nextQuestion() {
     renderQuestion();
 }
 
-// FLASHCARD LOGIC
+// --- FLASHCARD LOGIC (FIXED) ---
 async function loadFlashcards(file) {
     try {
         const res = await fetch(file);
@@ -77,20 +79,46 @@ async function loadFlashcards(file) {
         flashcards = [];
         let lines = text.split('\n');
         let tempQ = "";
+        
         lines.forEach(l => {
-            if(l.startsWith('Q:')) tempQ = l.replace('Q:', '').trim();
-            if(l.startsWith('A:')) flashcards.push({q: tempQ, a: l.replace('A:', '').trim()});
+            let line = l.trim();
+            if(line.startsWith('Q:')) tempQ = line.replace('Q:', '').trim();
+            if(line.startsWith('A:') && tempQ) {
+                flashcards.push({q: tempQ, a: line.replace('A:', '').trim()});
+                tempQ = ""; // Clear temp after pair is found
+            }
         });
-        showFlashcard();
-    } catch(e) { console.log("MD file not found"); }
+
+        if(flashcards.length > 0) {
+            fIdx = 0; // Ensure we start at the first card
+            showFlashcard();
+        }
+    } catch(e) { 
+        console.log("Error loading MD file:", e); 
+    }
 }
 
 function showFlashcard() {
-    if(!flashcards.length) return;
+    if(flashcards.length === 0) return;
+    
+    // 1. Un-flip the card first so you don't see the next answer early
     document.getElementById('card').classList.remove('flipped');
-    document.getElementById('f-front').innerText = flashcards[fIdx].q;
-    document.getElementById('f-back').innerText = flashcards[fIdx].a;
+    
+    // 2. Wait a split second for the flip animation, then change the text
+    setTimeout(() => {
+        document.getElementById('f-front').innerText = flashcards[fIdx].q;
+        document.getElementById('f-back').innerText = flashcards[fIdx].a;
+    }, 150);
 }
 
-function flipCard() { document.getElementById('card').classList.toggle('flipped'); }
-function nextFlashcard() { fIdx = (fIdx + 1) % flashcards.length; showFlashcard(); }
+function flipCard() { 
+    if(flashcards.length > 0) {
+        document.getElementById('card').classList.toggle('flipped'); 
+    }
+}
+
+function nextFlashcard() { 
+    if(flashcards.length === 0) return;
+    fIdx = (fIdx + 1) % flashcards.length; // Moves to next or loops to start
+    showFlashcard();
+}
