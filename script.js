@@ -1,7 +1,39 @@
 const database = {
-    eng: { title: "English Literature", notes: "Macbeth, AIC, and Christmas Carol.", file: "english.md" },
+    eng: { 
+        title: "English Eduqas Prep", 
+        notes: `
+            <h3>Eduqas Component 2: Exam Style Questions</h3>
+            <p><i>Focus: 19th & 21st Century Non-Fiction Comparison</i></p>
+            <div class="exam-box">
+                <b>Q1 (4 marks):</b> Read lines 1-15. List four things you learn about the writer's attitude.<br><br>
+                <b>Q2 (10 marks):</b> How does the writer of Text A use language and structure?
+            </div>
+        `, 
+        file: "english.md" 
+    },
     math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", file: "maths.md" },
-    sci: { title: "Combined Science", notes: "Edexcel: Biology, Chemistry, and Physics.", file: "science.md" },
+    sci: { 
+        title: "Combined Science (Edexcel)", 
+        notes: `
+            <h3>Edexcel Exam Practice Questions</h3>
+            
+            <div class="exam-box">
+                <span class="exam-tag">BIOLOGY (Core Practical Focus)</span><br>
+                <b>Q:</b> Explain the effect of temperature on the rate of an enzyme-controlled reaction. (6 marks)
+            </div>
+
+            <div class="exam-box">
+                <span class="exam-tag">CHEMISTRY (Atomic Structure)</span><br>
+                <b>Q:</b> Describe the differences between the plum pudding model and the nuclear model of the atom. (4 marks)
+            </div>
+
+            <div class="exam-box">
+                <span class="exam-tag">PHYSICS (Energy)</span><br>
+                <b>Q:</b> A ball is dropped from a height. Explain the energy transfers that occur as it falls and hits the ground. (6 marks)
+            </div>
+        `, 
+        file: "science.md" 
+    },
     hist: { title: "History", notes: "Medicine Through Time, Weimar & Nazi Germany.", file: "history.md" },
     geo: { title: "Geography", notes: "Natural Hazards, Urban Issues, UK Landscapes.", file: "geography.md" },
     span: { title: "Spanish", notes: "Identity, Culture, Holidays, and Study.", file: "spanish.md" },
