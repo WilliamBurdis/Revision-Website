@@ -33,7 +33,7 @@
     </section>
 
     <section id="study" class="hidden">
-        <button class="primary-btn" onclick="goHome()">← Back to Dashboard</button>
+        <button class="primary-btn" onclick="goHome()">← Back</button>
         <h1 id="sub-title">Subject Title</h1>
         
         <div class="tabs">
@@ -46,12 +46,18 @@
         </div>
 
         <div id="v-flash" class="content-box hidden">
+            <div id="flash-filters" class="filter-group hidden">
+                <button class="filter-btn active" onclick="filterCards('ALL')">All</button>
+                <button class="filter-btn" onclick="filterCards('BIOLOGY')">Bio</button>
+                <button class="filter-btn" onclick="filterCards('CHEMISTRY')">Chem</button>
+                <button class="filter-btn" onclick="filterCards('PHYSICS')">Phys</button>
+            </div>
+
             <div class="flashcard-box">
                 <div class="card-part front-part">
-                    <small>QUESTION</small>
+                    <small id="f-topic">QUESTION</small>
                     <div id="f-front">Loading cards...</div>
                 </div>
-                
                 <div class="card-part back-part" id="f-back-wrapper" style="display:none;">
                     <small>ANSWER</small>
                     <div id="f-back"></div>
@@ -61,6 +67,7 @@
             <div class="flash-controls">
                 <button class="primary-btn" id="reveal-btn" onclick="toggleAnswer()">Show Answer</button>
                 <button class="primary-btn next-btn" onclick="handleNextCard()">Next Card →</button>
+                <button class="primary-btn shuffle-btn" onclick="shuffleCurrentDeck()">🔀 Shuffle Deck</button>
             </div>
         </div>
     </section>
