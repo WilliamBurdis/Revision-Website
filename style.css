@@ -17,6 +17,25 @@ main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
 .tab-btn.active { background: var(--accent); color: white; }
 
 .content-box { background: var(--card); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+/* EXAM STYLE BOXES */
+.exam-box {
+    background: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid var(--accent);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    color: var(--text);
+}
+.exam-tag {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
+
 .card-part { padding: 30px; border-radius: 12px; text-align: center; font-size: 1.1rem; margin-bottom: 12px; border-left: 8px solid transparent; }
 .front-part { background: var(--accent); color: white; border-left-color: #2980b9; }
 .back-part { background: #27ae60; color: white; border-left-color: #1e8449; animation: slideIn 0.2s ease-out; }
