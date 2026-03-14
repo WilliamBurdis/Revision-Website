@@ -19,7 +19,10 @@ Q: What is the function of the Myelin Sheath in a neurone?
 A: Electrical insulation to speed up nerve impulse transmission.
 Q: How do you calculate BMI?
 A: BMI = mass (kg) / height² (m).
-
+Q: What is a "quadrat" used for?
+A: To sample stationary organisms to estimate population size.
+Q: Define "osmosis".
+A: Net movement of water from high to low potential across a partially permeable membrane.
 # --- CHEMISTRY (Edexcel Spec) ---
 Q: What is the relative mass and charge of an electron?
 A: Mass = 1/1835 (negligible); Charge = -1.
@@ -41,7 +44,10 @@ Q: What is the test for Chlorine gas?
 A: Damp blue litmus paper turns red then bleaches white.
 Q: Define "Activation Energy".
 A: The minimum energy needed for a reaction to occur.
-
+Q: Define "Electrolysis".
+A: Breakdown of an ionic compound using electricity.
+Q: Why is graphite used for electrodes?
+A: It is inert and conducts electricity due to delocalised electrons.
 # --- PHYSICS (Edexcel Spec) ---
 Q: What is the difference between Weight and Mass?
 A: Mass is the amount of matter (kg); Weight is the force of gravity (N).
@@ -63,3 +69,7 @@ Q: What is Alpha radiation made of?
 A: 2 protons and 2 neutrons (a Helium nucleus).
 Q: What is the formula for Power (using Current and Voltage)?
 A: Power = Current x Potential Difference (P=IV).
+Q: Formula for Kinetic Energy?
+A: KE = 0.5 x mass x velocity^2
+Q: Define a "vector" quantity.
+A: A quantity with both magnitude (size) and direction.
