@@ -12,7 +12,8 @@ function toggleTheme() { document.body.classList.toggle('dark'); }
 
 function loadSubject(key) {
     currentKey = key;
-    qIdx = 0; fIdx = 0;
+    qIdx = 0; 
+    fIdx = 0;
     document.getElementById('home').classList.add('hidden');
     document.getElementById('study').classList.remove('hidden');
     document.getElementById('sub-title').innerText = database[key].title;
@@ -34,24 +35,54 @@ function setTab(type) {
     document.getElementById('t-' + type).classList.add('active');
 }
 
-// FLASHCARD FUNCTIONS
+// --- FIXED FLASHCARD LOGIC ---
 async function loadFlashcards(file) {
     try {
+        console.log("Fetching file:", file);
         const res = await fetch(file);
+        if (!res.ok) throw new Error("Could not find " + file);
+        
         const text = await res.text();
         flashcards = [];
-        text.split('\n').forEach(l => {
-            if(l.startsWith('Q:')) flashcards.push({q: l.replace('Q:', '').trim(), a: ""});
-            if(l.startsWith('A:') && flashcards.length) flashcards[flashcards.length-1].a = l.replace('A:', '').trim();
+        
+        // Split by new line and clean up whitespace
+        const lines = text.split(/\r?\n/);
+        let currentQ = "";
+
+        lines.forEach(line => {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('Q:')) {
+                currentQ = trimmed.replace('Q:', '').trim();
+            } else if (trimmed.startsWith('A:') && currentQ) {
+                flashcards.push({
+                    q: currentQ,
+                    a: trimmed.replace('A:', '').trim()
+                });
+                currentQ = ""; // Reset
+            }
         });
-        showFlashcard();
-    } catch(e) { console.log("File error"); }
+
+        console.log("Loaded cards:", flashcards.length);
+        
+        if (flashcards.length > 0) {
+            showFlashcard();
+        } else {
+            document.getElementById('f-front').innerText = "No cards found in " + file;
+        }
+    } catch(e) { 
+        console.error("Flashcard Error:", e);
+        document.getElementById('f-front').innerText = "Error loading cards. Check console.";
+    }
 }
 
 function showFlashcard() {
     if(!flashcards.length) return;
+    
+    // Hide answer and reset button
     document.getElementById('f-back-wrapper').style.display = 'none';
     document.getElementById('reveal-btn').innerText = "Show Answer";
+    
+    // Fill text
     document.getElementById('f-front').innerText = flashcards[fIdx].q;
     document.getElementById('f-back').innerText = flashcards[fIdx].a;
 }
@@ -65,6 +96,7 @@ function toggleAnswer() {
 }
 
 function handleNextCard() {
+    if(!flashcards.length) return;
     fIdx = (fIdx + 1) % flashcards.length;
     showFlashcard();
 }
