@@ -1,89 +1,120 @@
 const database = {
-    eng: { title: "English Literature", notes: "Focus: Macbeth, An Inspector Calls, A Christmas Carol.", file: "english.md" },
-    math: { title: "Mathematics", notes: "Focus: Algebra, Ratio, Geometry, and Probability.", file: "maths.md" },
-    // ADDED SCIENCE DATABASE ENTRY
-    sci: { title: "Combined Science", notes: "Edexcel Specification: Biology, Chemistry, and Physics.", file: "science.md" }
+    eng: { title: "English Literature", notes: "Macbeth, AIC, and Christmas Carol.", file: "english.md" },
+    math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", file: "maths.md" },
+    sci: { title: "Combined Science", notes: "Edexcel: Biology, Chemistry, and Physics.", file: "science.md" },
+    hist: { title: "History", notes: "Medicine Through Time, Weimar & Nazi Germany.", file: "history.md" },
+    geo: { title: "Geography", notes: "Natural Hazards, Urban Issues, UK Landscapes.", file: "geography.md" },
+    span: { title: "Spanish", notes: "Identity, Culture, Holidays, and Study.", file: "spanish.md" },
+    dra: { title: "Drama", notes: "Blood Brothers, DNA, Live Theatre Review.", file: "drama.md" },
+    art: { title: "Art", notes: "Portfolio, Artist Analysis, Media Skills.", file: "art.md" },
+    mus: { title: "Music", notes: "Set Works, Dictation, Composition.", file: "music.md" },
+    cs: { title: "Computer Science", notes: "Algorithms, Data Representation, Cyber Security.", file: "cs.md" },
+    it: { title: "IT", notes: "User Interfaces, Spreadsheets, Digital Systems.", file: "it.md" },
+    rs: { title: "RS", notes: "Christianity, Islam, Ethics & Relationships.", file: "rs.md" },
+    food: { title: "Food & Nutrition", notes: "Nutrition, Food Safety, Science of Cooking.", file: "food.md" },
+    biz: { title: "Business", notes: "Enterprise, Marketing, Finance, HR.", file: "business.md" },
+    sport: { title: "Sport", notes: "Anatomy, Physiology, Fitness Training.", file: "sport.md" },
+    cit: { title: "Citizenship", notes: "Democracy, Justice, Global Citizenship.", file: "citizenship.md" }
 };
 
-let flashcards = [];
+let allFlashcards = [];
+let filteredCards = [];
 let fIdx = 0;
 
-function toggleTheme() {
-    document.body.classList.toggle('dark');
-}
+function toggleTheme() { document.body.classList.toggle('dark'); }
 
 function setTab(type) {
     document.getElementById('v-notes').classList.add('hidden');
     document.getElementById('v-flash').classList.add('hidden');
     document.getElementById('v-' + type).classList.remove('hidden');
-    
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('t-' + type).classList.add('active');
 }
 
 async function loadSubject(key) {
     const sub = database[key];
-    
     document.getElementById('home').classList.add('hidden');
     document.getElementById('study').classList.remove('hidden');
     document.getElementById('sub-title').innerText = sub.title;
     document.getElementById('note-body').innerHTML = sub.notes;
 
+    const filterUI = document.getElementById('flash-filters');
+    key === 'sci' ? filterUI.classList.remove('hidden') : filterUI.classList.add('hidden');
+
     fIdx = 0;
-    flashcards = [];
+    allFlashcards = [];
     setTab('notes');
 
     try {
-        const response = await fetch(sub.file);
-        if (!response.ok) throw new Error("File not found");
-        const text = await response.text();
-        
+        const res = await fetch(sub.file);
+        const text = await res.text();
         const lines = text.split(/\r?\n/);
+        let currentTopic = "GENERAL";
         let tempQ = "";
 
         lines.forEach(line => {
-            const cleanLine = line.trim();
-            if (cleanLine.startsWith('Q:')) {
-                tempQ = cleanLine.replace('Q:', '').trim();
-            } else if (cleanLine.startsWith('A:') && tempQ) {
-                flashcards.push({ q: tempQ, a: cleanLine.replace('A:', '').trim() });
+            const clean = line.trim();
+            if (clean.startsWith('#')) {
+                currentTopic = clean.replace('#', '').replace(/-/g, '').trim().toUpperCase();
+            } else if (clean.startsWith('Q:')) {
+                tempQ = clean.replace('Q:', '').trim();
+            } else if (clean.startsWith('A:') && tempQ) {
+                allFlashcards.push({ q: tempQ, a: clean.replace('A:', '').trim(), topic: currentTopic });
                 tempQ = "";
             }
         });
 
-        if (flashcards.length > 0) {
-            updateFlashcardUI();
-        } else {
-            document.getElementById('f-front').innerText = "No cards found in " + sub.file;
-        }
-    } catch (error) {
-        document.getElementById('f-front').innerText = "Error: Could not find " + sub.file;
+        filteredCards = [...allFlashcards];
+        updateFlashcardUI();
+    } catch (e) { 
+        document.getElementById('f-front').innerText = "Create " + sub.file + " on GitHub to see cards."; 
     }
+}
+
+function filterCards(category) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        const isMatch = (category === 'ALL' && btn.innerText === 'All') || btn.innerText.toUpperCase() === category;
+        btn.classList.toggle('active', isMatch);
+    });
+    filteredCards = (category === 'ALL') ? [...allFlashcards] : allFlashcards.filter(c => c.topic.includes(category));
+    fIdx = 0;
+    updateFlashcardUI();
+}
+
+function shuffleCurrentDeck() {
+    if (filteredCards.length === 0) return;
+    for (let i = filteredCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+    }
+    fIdx = 0;
+    updateFlashcardUI();
 }
 
 function updateFlashcardUI() {
-    if (flashcards.length === 0) return;
+    if (!filteredCards.length) {
+        document.getElementById('f-front').innerText = "No cards found.";
+        return;
+    }
     document.getElementById('f-back-wrapper').style.display = 'none';
     document.getElementById('reveal-btn').innerText = "Show Answer";
-    document.getElementById('f-front').innerText = flashcards[fIdx].q;
-    document.getElementById('f-back').innerText = flashcards[fIdx].a;
+    const card = filteredCards[fIdx];
+    document.getElementById('f-topic').innerText = card.topic + " - QUESTION";
+    document.getElementById('f-front').innerText = card.q;
+    document.getElementById('f-back').innerText = card.a;
 }
 
 function toggleAnswer() {
-    const wrapper = document.getElementById('f-back-wrapper');
-    const btn = document.getElementById('reveal-btn');
-    if (wrapper.style.display === 'none') {
-        wrapper.style.display = 'block';
-        btn.innerText = "Hide Answer";
-    } else {
-        wrapper.style.display = 'none';
-        btn.innerText = "Show Answer";
-    }
+    const w = document.getElementById('f-back-wrapper');
+    const b = document.getElementById('reveal-btn');
+    const isHidden = w.style.display === 'none';
+    w.style.display = isHidden ? 'block' : 'none';
+    b.innerText = isHidden ? "Hide Answer" : "Show Answer";
 }
 
 function handleNextCard() {
-    if (flashcards.length === 0) return;
-    fIdx = (fIdx + 1) % flashcards.length;
+    if (!filteredCards.length) return;
+    fIdx = (fIdx + 1) % filteredCards.length;
     updateFlashcardUI();
 }
 
