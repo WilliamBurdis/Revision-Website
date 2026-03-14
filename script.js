@@ -1,16 +1,6 @@
 const database = {
-    eng: {
-        title: "English Suite",
-        notes: "Focus on Macbeth and Language techniques.",
-        questions: [{ q: "Who kills Macbeth?", o: ["Macduff", "Duncan"], c: 0 }],
-        file: "english.md"
-    },
-    math: {
-        title: "Mathematics",
-        notes: "Practice your Algebra and Shapes.",
-        questions: [{ q: "Solve 2x = 10", o: ["x=5", "x=2"], c: 0 }],
-        file: "maths.md"
-    }
+    eng: { title: "English Literature", notes: "Macbeth, AIC, and Christmas Carol focus.", questions: [{q:"Who kills Macbeth?", o:["Macduff","Duncan"], c:0}], file: "english.md" },
+    math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", questions: [{q:"2x = 20", o:["x=10","x=5"], c:0}], file: "maths.md" }
 };
 
 let currentKey = "";
@@ -18,20 +8,16 @@ let qIdx = 0;
 let flashcards = [];
 let fIdx = 0;
 
-function toggleTheme() {
-    document.body.classList.toggle('dark');
-}
+function toggleTheme() { document.body.classList.toggle('dark'); }
 
 function loadSubject(key) {
     currentKey = key;
-    qIdx = 0; 
-    fIdx = 0; // Reset flashcard counter to 0
+    qIdx = 0; fIdx = 0;
     document.getElementById('home').classList.add('hidden');
     document.getElementById('study').classList.remove('hidden');
     document.getElementById('sub-title').innerText = database[key].title;
     document.getElementById('note-body').innerHTML = database[key].notes;
     setTab('notes');
-    renderQuestion();
     loadFlashcards(database[key].file);
 }
 
@@ -48,77 +34,37 @@ function setTab(type) {
     document.getElementById('t-' + type).classList.add('active');
 }
 
-// --- QUIZ LOGIC ---
-function renderQuestion() {
-    const q = database[currentKey].questions[qIdx];
-    document.getElementById('q-text').innerText = q.q;
-    const container = document.getElementById('q-options');
-    container.innerHTML = "";
-    document.getElementById('q-feedback').innerText = ""; // Clear old feedback
-    q.o.forEach((opt, i) => {
-        const b = document.createElement('button');
-        b.className = "quiz-opt"; b.innerText = opt;
-        b.onclick = () => {
-            document.getElementById('q-feedback').innerText = (i === q.c) ? "✅ Correct!" : "❌ Try again";
-            document.getElementById('next-btn').classList.remove('hidden');
-        };
-        container.appendChild(b);
-    });
-}
-
-function nextQuestion() {
-    qIdx = (qIdx + 1) % database[currentKey].questions.length;
-    renderQuestion();
-}
-
-// --- FLASHCARD LOGIC (FIXED) ---
+// FLASHCARD FUNCTIONS
 async function loadFlashcards(file) {
     try {
         const res = await fetch(file);
         const text = await res.text();
         flashcards = [];
-        let lines = text.split('\n');
-        let tempQ = "";
-        
-        lines.forEach(l => {
-            let line = l.trim();
-            if(line.startsWith('Q:')) tempQ = line.replace('Q:', '').trim();
-            if(line.startsWith('A:') && tempQ) {
-                flashcards.push({q: tempQ, a: line.replace('A:', '').trim()});
-                tempQ = ""; // Clear temp after pair is found
-            }
+        text.split('\n').forEach(l => {
+            if(l.startsWith('Q:')) flashcards.push({q: l.replace('Q:', '').trim(), a: ""});
+            if(l.startsWith('A:') && flashcards.length) flashcards[flashcards.length-1].a = l.replace('A:', '').trim();
         });
-
-        if(flashcards.length > 0) {
-            fIdx = 0; // Ensure we start at the first card
-            showFlashcard();
-        }
-    } catch(e) { 
-        console.log("Error loading MD file:", e); 
-    }
+        showFlashcard();
+    } catch(e) { console.log("File error"); }
 }
 
 function showFlashcard() {
-    if(flashcards.length === 0) return;
-    
-    // 1. Un-flip the card first so you don't see the next answer early
-    document.getElementById('card').classList.remove('flipped');
-    
-    // 2. Wait a split second for the flip animation, then change the text
-    setTimeout(() => {
-        document.getElementById('f-front').innerText = flashcards[fIdx].q;
-        document.getElementById('f-back').innerText = flashcards[fIdx].a;
-    }, 150);
+    if(!flashcards.length) return;
+    document.getElementById('f-back-wrapper').style.display = 'none';
+    document.getElementById('reveal-btn').innerText = "Show Answer";
+    document.getElementById('f-front').innerText = flashcards[fIdx].q;
+    document.getElementById('f-back').innerText = flashcards[fIdx].a;
 }
 
-function flipCard() { 
-    if(flashcards.length > 0) {
-        document.getElementById('card').classList.toggle('flipped'); 
-    }
+function toggleAnswer() {
+    const w = document.getElementById('f-back-wrapper');
+    const b = document.getElementById('reveal-btn');
+    const isHidden = w.style.display === 'none';
+    w.style.display = isHidden ? 'block' : 'none';
+    b.innerText = isHidden ? "Hide Answer" : "Show Answer";
 }
 
-function nextFlashcard() { 
-    if(flashcards.length === 0) return;
-    fIdx = (fIdx + 1) % flashcards.length; // Moves to next or loops to start
+function handleNextCard() {
+    fIdx = (fIdx + 1) % flashcards.length;
     showFlashcard();
 }
