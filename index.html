@@ -3,53 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GradeForge | GitHub Edition</title>
+    <title>GradeForge | GitHub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav>
+        <div class="logo">GradeForge</div>
+        <button class="primary-btn" onclick="toggleTheme()" id="theme-toggle">🌙 Dark Mode</button>
+    </nav>
 
-<nav>
-    <div class="logo">GradeForge</div>
-    <button class="primary-btn" onclick="toggleTheme()" id="theme-toggle">🌙 Dark Mode</button>
-</nav>
-
-<main id="app">
-    <section id="home-screen">
-        <h1>My Dashboard</h1>
-        <div class="subject-grid">
-            <div class="subject-card" onclick="openSubject('eng')">
-                <h3>📚 English</h3>
-                <p>Literature & Language Master</p>
+    <main id="app">
+        <section id="home">
+            <h1>My Dashboard</h1>
+            <div class="subject-grid">
+                <div class="subject-card" onclick="loadSubject('eng')">
+                    <h3>📚 English</h3>
+                    <p>Notes, Quiz & Flashcards</p>
+                </div>
+                <div class="subject-card" onclick="loadSubject('math')">
+                    <h3>📐 Mathematics</h3>
+                    <p>Practice Question Bank</p>
+                </div>
             </div>
-            <div class="subject-card" onclick="openSubject('math')">
-                <h3>📐 Mathematics</h3>
-                <p>Complete Question Bank</p>
+        </section>
+
+        <section id="study" class="hidden">
+            <button class="primary-btn" onclick="goHome()">← Back</button>
+            <h1 id="sub-title"></h1>
+            
+            <div class="tabs">
+                <button id="t-notes" class="tab-btn active" onclick="setTab('notes')">Notes</button>
+                <button id="t-quiz" class="tab-btn" onclick="setTab('quiz')">Questions</button>
+                <button id="t-flash" class="tab-btn" onclick="setTab('flash')">Flashcards</button>
             </div>
-        </div>
-    </section>
 
-    <section id="study-screen" class="hidden">
-        <button class="primary-btn" onclick="goHome()">← Back</button>
-        <h1 id="subject-title"></h1>
-        
-        <div class="tabs">
-            <button id="tab-notes" class="tab-btn active" onclick="switchTab('notes')">Notes</button>
-            <button id="tab-quiz" class="tab-btn" onclick="switchTab('quiz')">Questions</button>
-        </div>
+            <div id="v-notes" class="content-box">
+                <div id="note-body"></div>
+            </div>
 
-        <div id="view-notes" class="content-box">
-            <div id="note-body"></div>
-        </div>
+            <div id="v-quiz" class="content-box hidden">
+                <h3 id="q-text"></h3>
+                <div id="q-options"></div>
+                <p id="q-feedback"></p>
+                <button id="next-btn" class="primary-btn hidden" onclick="nextQuestion()">Next Question</button>
+            </div>
 
-        <div id="view-quiz" class="content-box hidden">
-            <h3 id="question-text"></h3>
-            <div id="options-container"></div>
-            <p id="feedback-text"></p>
-            <button id="next-btn" class="primary-btn hidden" onclick="nextQuestion()">Next Question</button>
-        </div>
-    </section>
-</main>
+            <div id="v-flash" class="content-box hidden">
+                <div class="card-container" onclick="flipCard()">
+                    <div id="card">
+                        <div class="card-face front" id="f-front">Loading...</div>
+                        <div class="card-face back" id="f-back">...</div>
+                    </div>
+                </div>
+                <button class="primary-btn" onclick="nextFlashcard()" style="width:100%; margin-top:20px;">Next Flashcard</button>
+            </div>
+        </section>
+    </main>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
