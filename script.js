@@ -2,11 +2,15 @@ const database = {
     eng: { 
         title: "English Eduqas Prep", 
         notes: `
-            <h3>Eduqas Component 2: Exam Style Questions</h3>
-            <p><i>Focus: 19th & 21st Century Non-Fiction Comparison</i></p>
+            <h3>Eduqas Component 2: Practice</h3>
+            <p><i>19th & 21st Century Non-Fiction</i></p>
             <div class="exam-box">
-                <b>Q1 (4 marks):</b> Read lines 1-15. List four things you learn about the writer's attitude.<br><br>
-                <b>Q2 (10 marks):</b> How does the writer of Text A use language and structure?
+                <span class="exam-tag">Component 2 Q1</span>
+                <b>Q (4 marks):</b> List four things you learn about the writer's attitude in lines 1-15.
+            </div>
+            <div class="exam-box">
+                <span class="exam-tag">Component 2 Q3</span>
+                <b>Q (10 marks):</b> Compare the writers' views on education in Text A and Text B.
             </div>
         `, 
         file: "english.md" 
@@ -15,21 +19,18 @@ const database = {
     sci: { 
         title: "Combined Science (Edexcel)", 
         notes: `
-            <h3>Edexcel Exam Practice Questions</h3>
-            
+            <h3>Edexcel Exam Style Questions</h3>
             <div class="exam-box">
-                <span class="exam-tag">BIOLOGY (Core Practical Focus)</span><br>
-                <b>Q:</b> Explain the effect of temperature on the rate of an enzyme-controlled reaction. (6 marks)
+                <span class="exam-tag">Biology: 6-Marker</span>
+                <b>Q:</b> Explain how the structure of a root hair cell is adapted to its function. (6 marks)
             </div>
-
             <div class="exam-box">
-                <span class="exam-tag">CHEMISTRY (Atomic Structure)</span><br>
-                <b>Q:</b> Describe the differences between the plum pudding model and the nuclear model of the atom. (4 marks)
+                <span class="exam-tag">Chemistry: 4-Marker</span>
+                <b>Q:</b> Describe the test for chlorine gas and the observed result. (4 marks)
             </div>
-
             <div class="exam-box">
-                <span class="exam-tag">PHYSICS (Energy)</span><br>
-                <b>Q:</b> A ball is dropped from a height. Explain the energy transfers that occur as it falls and hits the ground. (6 marks)
+                <span class="exam-tag">Physics: 6-Marker</span>
+                <b>Q:</b> Explain the difference between contamination and irradiation. (6 marks)
             </div>
         `, 
         file: "science.md" 
