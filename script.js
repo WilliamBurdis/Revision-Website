@@ -1,6 +1,8 @@
 const database = {
-    eng: { title: "English Literature", notes: "Macbeth, AIC, and Christmas Carol.", file: "english.md" },
-    math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", file: "maths.md" }
+    eng: { title: "English Literature", notes: "Focus: Macbeth, An Inspector Calls, A Christmas Carol.", file: "english.md" },
+    math: { title: "Mathematics", notes: "Focus: Algebra, Ratio, Geometry, and Probability.", file: "maths.md" },
+    // ADDED SCIENCE DATABASE ENTRY
+    sci: { title: "Combined Science", notes: "Edexcel Specification: Biology, Chemistry, and Physics.", file: "science.md" }
 };
 
 let flashcards = [];
@@ -11,14 +13,10 @@ function toggleTheme() {
 }
 
 function setTab(type) {
-    // Hide all views
     document.getElementById('v-notes').classList.add('hidden');
     document.getElementById('v-flash').classList.add('hidden');
-    
-    // Show selected view
     document.getElementById('v-' + type).classList.remove('hidden');
     
-    // Update button colors
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('t-' + type).classList.add('active');
 }
@@ -26,20 +24,18 @@ function setTab(type) {
 async function loadSubject(key) {
     const sub = database[key];
     
-    // Update UI Labels
     document.getElementById('home').classList.add('hidden');
     document.getElementById('study').classList.remove('hidden');
     document.getElementById('sub-title').innerText = sub.title;
     document.getElementById('note-body').innerHTML = sub.notes;
 
-    // Reset Counters
     fIdx = 0;
     flashcards = [];
     setTab('notes');
 
-    // Fetch Cards
     try {
         const response = await fetch(sub.file);
+        if (!response.ok) throw new Error("File not found");
         const text = await response.text();
         
         const lines = text.split(/\r?\n/);
@@ -67,12 +63,8 @@ async function loadSubject(key) {
 
 function updateFlashcardUI() {
     if (flashcards.length === 0) return;
-    
-    // Reset Display
     document.getElementById('f-back-wrapper').style.display = 'none';
     document.getElementById('reveal-btn').innerText = "Show Answer";
-    
-    // Inject Text
     document.getElementById('f-front').innerText = flashcards[fIdx].q;
     document.getElementById('f-back').innerText = flashcards[fIdx].a;
 }
@@ -80,7 +72,6 @@ function updateFlashcardUI() {
 function toggleAnswer() {
     const wrapper = document.getElementById('f-back-wrapper');
     const btn = document.getElementById('reveal-btn');
-    
     if (wrapper.style.display === 'none') {
         wrapper.style.display = 'block';
         btn.innerText = "Hide Answer";
