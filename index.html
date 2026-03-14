@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GradeForge | English & Maths Master</title>
+    <title>GradeForge | Master</title>
     <style>
         :root { 
             --bg-color: #f4f7f6; 
             --text-color: #333; 
             --card-bg: #ffffff; 
             --accent: #3498db; 
-            --btn-text: #ffffff;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         }
         
@@ -26,100 +25,57 @@
             background-color: var(--bg-color); 
             color: var(--text-color); 
             font-family: var(--font-family); 
-            margin: 0; 
-            padding: 0; 
-            transition: background-color 0.3s, color 0.3s; 
+            margin: 0; padding: 0; 
+            transition: 0.3s; 
         }
 
         nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            padding: 15px 30px; 
-            background: var(--card-bg); 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 30px; background: var(--card-bg); 
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
         }
 
         .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
-
         main { max-width: 900px; margin: 30px auto; padding: 0 20px; }
 
         .subject-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; 
         }
 
         .subject-card { 
-            background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 12px; 
-            text-align: center; 
-            cursor: pointer; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            transition: 0.2s; 
-            border: 2px solid transparent; 
+            background: var(--card-bg); padding: 25px; border-radius: 12px; 
+            text-align: center; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            transition: 0.2s; border: 2px solid transparent; 
         }
-
         .subject-card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
         .tabs { display: flex; gap: 10px; margin: 20px 0; }
-
         .tab-btn { 
-            flex: 1; 
-            padding: 12px; 
-            border: none; 
-            background: #ccc; 
-            color: #333;
-            cursor: pointer; 
-            border-radius: 5px; 
-            font-weight: bold; 
+            flex: 1; padding: 12px; border: none; background: #ccc; 
+            color: #333; cursor: pointer; border-radius: 5px; font-weight: bold; 
         }
-
         .tab-btn.active { background: var(--accent); color: white; }
 
         .tab-content { 
-            display: none; 
-            background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            display: none; background: var(--card-bg); padding: 25px; 
+            border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-
         .tab-content.active { display: block; }
 
         .hidden { display: none !important; }
 
         .quiz-opt { 
-            display: block; 
-            width: 100%; 
-            padding: 15px; 
-            margin: 10px 0; 
-            background: var(--bg-color); 
-            color: var(--text-color);
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            text-align: left; 
-            font-size: 1rem;
-            font-family: inherit;
+            display: block; width: 100%; padding: 15px; margin: 10px 0; 
+            background: var(--bg-color); color: var(--text-color);
+            border: 1px solid #ccc; border-radius: 5px; cursor: pointer; 
+            text-align: left; font-size: 1rem;
         }
-
-        .quiz-opt:hover { border-color: var(--accent); }
 
         button.primary-btn { 
-            background: var(--accent); 
-            color: white; 
-            border: none; 
-            padding: 10px 20px; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            font-weight: bold;
-            font-size: 1rem;
-            font-family: inherit;
+            background: var(--accent); color: white; border: none; 
+            padding: 10px 20px; border-radius: 5px; cursor: pointer; 
+            font-weight: bold; font-size: 1rem;
         }
-
-        #next-btn { margin-top: 20px; width: 100%; }
     </style>
 </head>
 <body>
@@ -134,11 +90,11 @@
             <div class="subject-grid">
                 <div class="subject-card" onclick="loadSubject('english')">
                     <h3>📚 English</h3>
-                    <p>Complete Lit & Lang Suite</p>
+                    <p>Complete Literature & Language</p>
                 </div>
                 <div class="subject-card" onclick="loadSubject('maths')">
                     <h3>📐 Mathematics</h3>
-                    <p>Expanded Question Bank</p>
+                    <p>Full Exam Question Bank</p>
                 </div>
             </div>
         </section>
@@ -157,10 +113,12 @@
             </div>
 
             <div id="quiz" class="tab-content">
-                <h3 id="q-text"></h3>
-                <div id="q-options"></div>
-                <div id="q-feedback" style="margin-top:15px; font-weight:bold;"></div>
-                <button id="next-btn" class="hidden primary-btn" onclick="nextQuestion()">Next Question</button>
+                <div id="quiz-container">
+                    <h3 id="q-text"></h3>
+                    <div id="q-options"></div>
+                    <div id="q-feedback" style="margin-top:15px; font-weight:bold;"></div>
+                    <button id="next-btn" class="hidden primary-btn" onclick="nextQuestion()" style="margin-top:20px; width:100%;">Next Question</button>
+                </div>
             </div>
         </section>
     </main>
@@ -168,66 +126,41 @@
     <script>
         const database = {
             english: {
-                title: "GCSE English (Lit & Lang)",
-                notes: `
-                    <h3>1. Shakespeare: Macbeth</h3>
-                    <p><b>Key Concept:</b> The Great Chain of Being. Ambition is Macbeth's <i>hamartia</i> (fatal flaw).</p>
-                    <h3>2. 19th Century Novel: A Christmas Carol</h3>
-                    <p><b>Key Concept:</b> Social Responsibility. Scrooge represents Malthusian capitalism; Tiny Tim represents the 'deserving poor'.</p>
-                    <h3>3. Modern Drama: An Inspector Calls</h3>
-                    <p><b>Key Concept:</b> Socialism vs Capitalism. The Inspector is a mouthpiece for J.B. Priestley’s views.</p>
-                    <h3>4. Poetry: Power and Conflict</h3>
-                    <p><b>Tip:</b> Always compare. Nature's power (Ozymandias) vs Human power (London).</p>
-                    <h3>5. Language Paper 1 & 2</h3>
-                    <p><b>Paper 1:</b> Fiction. Q5 is 40 marks. Focus on sensory imagery.<br><b>Paper 2:</b> Non-fiction. Focus on rhetoric (AFOREST).</p>
-                `,
+                title: "GCSE English",
+                notes: "<h3>Course Overview</h3><ul><li><b>Macbeth:</b> Ambition and Guilt.</li><li><b>Christmas Carol:</b> Poverty and Redemption.</li><li><b>Language:</b> Focus on Paper 1 (Fiction) and Paper 2 (Non-Fiction).</li></ul>",
                 questions: [
-                    { q: "In Macbeth, what does 'Out, damned spot!' refer to?", opts: ["Blood on a sword", "A stain on a dress", "Imaginary guilt on hands"], correct: 2, exp: "Lady Macbeth is hallucinating blood caused by her guilt." },
-                    { q: "Which Dickens character says 'God bless us, every one!'?", opts: ["Scrooge", "Tiny Tim", "Bob Cratchit"], correct: 1, exp: "Tiny Tim ends the story with this famous line." },
-                    { q: "What is the Inspector's name in 'An Inspector Calls'?", opts: ["Goole", "Smith", "Birling"], correct: 0, exp: "Inspector Goole (a pun on 'ghoul')." },
-                    { q: "In Poetry, what is an 'Iambic Pentameter'?", opts: ["A 10-syllable line", "A rhyming couplet", "A repeating stanza"], correct: 0, exp: "It mimics a heartbeat (da-DUM da-DUM x5)." },
-                    { q: "Which AFOREST device is 'The wind whispered through the trees'?", opts: ["Alliteration", "Personification", "Statistics"], correct: 1, exp: "Giving human traits to non-human things." }
+                    { q: "What is Macbeth's fatal flaw?", opts: ["Greed", "Ambition", "Cowardice"], correct: 1, exp: "His 'vaulting ambition' drives the tragedy." },
+                    { q: "Who is the 'ghost' of the future in A Christmas Carol?", opts: ["Marley", "Ghost of Christmas Yet to Come", "Fred"], correct: 1, exp: "This ghost shows Scrooge his lonely death." },
+                    { q: "Define 'Onomatopoeia'.", opts: ["Word sounds like its meaning", "A comparison using like", "Extreme exaggeration"], correct: 0, exp: "Words like 'Bang' or 'Hiss'." }
                 ]
             },
             maths: {
                 title: "GCSE Mathematics",
-                notes: "Question Bank active. Focus on Algebra, Ratio, and Geometry.",
+                notes: "Question Bank Active.",
                 questions: [
-                    // Algebra
-                    { q: "Solve: 7x - 5 = 30", opts: ["x=5", "x=3.5", "x=6"], correct: 0, exp: "7x = 35, so x = 5." },
-                    { q: "Factorise: x² - 9", opts: ["(x-3)(x+3)", "(x-9)(x+1)", "(x-3)(x-3)"], correct: 0, exp: "Difference of two squares." },
-                    { q: "Gradient of y = -2x + 8?", opts: ["8", "2", "-2"], correct: 2, exp: "m is -2." },
-                    // Geometry
-                    { q: "Interior angle of a regular square?", opts: ["90°", "180°", "360°"], correct: 0, exp: "Squares have 90 degree corners." },
-                    { q: "Pythagoras: c if a=3, b=4", opts: ["5", "7", "25"], correct: 0, exp: "sqrt(3² + 4²) = 5." },
-                    { q: "Volume of a cube with side 3cm?", opts: ["9cm³", "27cm³", "18cm³"], correct: 1, exp: "3 * 3 * 3 = 27." },
-                    // Number/Ratio
-                    { q: "Write 0.05 as a percentage", opts: ["0.5%", "5%", "50%"], correct: 1, exp: "0.05 * 100 = 5%." },
-                    { q: "Share £60 in ratio 1:2", opts: ["£20:£40", "£30:£30", "£10:£50"], correct: 0, exp: "3 shares. 1 share = £20." },
-                    { q: "What is 10% of 250?", opts: ["25", "10", "2.5"], correct: 0, exp: "250 / 10 = 25." },
-                    // Bonus Questions
-                    { q: "Solve: x/2 = 10", opts: ["x=5", "x=20", "x=12"], correct: 1, exp: "Multiply by 2." },
-                    { q: "Simplify: y * y * y", opts: ["3y", "y³", "2y"], correct: 1, exp: "y to the power of 3." },
-                    { q: "Sum of angles in a triangle?", opts: ["180°", "360°", "90°"], correct: 0, exp: "All triangles sum to 180." },
-                    { q: "What is 1/4 as a decimal?", opts: ["0.4", "0.25", "0.5"], correct: 1, exp: "1 divided by 4." },
-                    { q: "Highest Common Factor of 12 and 20?", opts: ["2", "4", "6"], correct: 1, exp: "4 is the largest number that goes into both." },
-                    { q: "Value of 10 squared?", opts: ["20", "100", "1000"], correct: 1, exp: "10 * 10 = 100." }
+                    { q: "Solve 5x = 40", opts: ["x=5", "x=8", "x=10"], correct: 1, exp: "40 / 5 = 8." },
+                    { q: "What is 15% of 200?", opts: ["15", "30", "45"], correct: 1, exp: "10% is 20, 5% is 10. Total 30." },
+                    { q: "Simplify x³ * x²", opts: ["x⁵", "x⁶", "2x⁵"], correct: 0, exp: "Add the indices: 3 + 2 = 5." },
+                    { q: "Solve: x + 12 = 30", opts: ["18", "42", "20"], correct: 0, exp: "30 - 12 = 18." },
+                    { q: "Area of a rectangle (L=5, W=10)?", opts: ["15", "50", "30"], correct: 1, exp: "Length * Width = 50." },
+                    { q: "What is √81?", opts: ["7", "8", "9"], correct: 2, exp: "9 * 9 = 81." },
+                    { q: "1/2 + 1/4 = ?", opts: ["2/6", "3/4", "1/6"], correct: 1, exp: "0.5 + 0.25 = 0.75." },
+                    { q: "Angles in a quadrilateral sum to?", opts: ["180°", "360°", "270°"], correct: 1, exp: "Squares, rectangles, etc., sum to 360." }
                 ]
             }
         };
 
-        let currentSubject = '';
+        let currentKey = '';
         let qIdx = 0;
 
         function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('theme-toggle');
-            body.classList.toggle('dark-mode');
-            btn.innerText = body.classList.contains('dark-mode') ? "☀️ Light Mode" : "🌙 Dark Mode";
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            document.getElementById('theme-toggle').innerText = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
         }
 
         function loadSubject(key) {
-            currentSubject = key;
+            currentKey = key;
             qIdx = 0;
             document.getElementById('homepage').classList.add('hidden');
             document.getElementById('study-view').classList.remove('hidden');
@@ -249,21 +182,21 @@
             document.getElementById('study-view').classList.add('hidden');
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        function switchTab(t) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.getElementById(tabId + '-tab-btn').classList.add('active');
+            document.getElementById(t).classList.add('active');
+            document.getElementById(t + '-tab-btn').classList.add('active');
         }
 
         function renderQuestion() {
-            const quizContainer = document.getElementById('quiz');
-            quizContainer.innerHTML = `<h3 id="q-text"></h3><div id="q-options"></div><div id="q-feedback" style="margin-top:15px; font-weight:bold;"></div><button id="next-btn" class="hidden primary-btn" onclick="nextQuestion()">Next Question</button>`;
-            
-            const data = database[currentSubject].questions[qIdx];
+            const data = database[currentKey].questions[qIdx];
             document.getElementById('q-text').innerText = data.q;
-            const optDiv = document.getElementById('q-options');
+            document.getElementById('q-feedback').innerText = '';
+            document.getElementById('next-btn').classList.add('hidden');
             
+            const optDiv = document.getElementById('q-options');
+            optDiv.innerHTML = '';
             data.opts.forEach((o, i) => {
                 const b = document.createElement('button');
                 b.className = 'quiz-opt';
@@ -274,16 +207,26 @@
         }
 
         function checkAns(i) {
-            const data = database[currentSubject].questions[qIdx];
-            const f = document.getElementById('q-feedback');
-            const btns = document.querySelectorAll('.quiz-opt');
+            const data = database[currentKey].questions[qIdx];
+            const feed = document.getElementById('q-feedback');
+            document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
             
-            btns.forEach(btn => btn.disabled = true);
-
             if(i === data.correct) {
-                f.innerHTML = "<span style='color:green'>✅ Correct!</span> " + data.exp;
+                feed.innerHTML = "<span style='color:green'>✅ Correct!</span> " + data.exp;
             } else {
-                f.innerHTML = "<span style='color:red'>❌ Incorrect.</span> " + data.exp;
+                feed.innerHTML = "<span style='color:red'>❌ Incorrect.</span> " + data.exp;
             }
             document.getElementById('next-btn').classList.remove('hidden');
         }
+
+        function nextQuestion() {
+            qIdx++;
+            if(qIdx < database[currentKey].questions.length) {
+                renderQuestion();
+            } else {
+                document.getElementById('quiz-container').innerHTML = "<h3>Mastery Achieved!</h3><button class='primary-btn' onclick='goHome()'>Back to Dashboard</button>";
+            }
+        }
+    </script>
+</body>
+</html>
