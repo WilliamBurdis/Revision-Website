@@ -9,8 +9,6 @@ main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
 .subject-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
 .subject-card { background: var(--card); padding: 20px; border-radius: 12px; cursor: pointer; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 2px solid transparent; transition: 0.2s; }
 .subject-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-.subject-card h3 { margin: 10px 0 5px 0; font-size: 1.1rem; }
-.subject-card p { margin: 0; font-size: 0.85rem; opacity: 0.7; }
 
 .tabs { display: flex; gap: 10px; margin: 20px 0; }
 .tab-btn { flex: 1; padding: 12px; border: none; background: #ccc; cursor: pointer; border-radius: 5px; font-weight: bold; }
@@ -18,23 +16,9 @@ main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
 
 .content-box { background: var(--card); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 
-/* EXAM STYLE BOXES */
-.exam-box {
-    background: rgba(52, 152, 219, 0.1);
-    border-left: 4px solid var(--accent);
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 4px;
-    color: var(--text);
-}
-.exam-tag {
-    font-weight: bold;
-    color: var(--accent);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 5px;
-}
+/* EXAM BOXES */
+.exam-box { background: rgba(52, 152, 219, 0.1); border-left: 4px solid var(--accent); padding: 15px; margin: 15px 0; border-radius: 4px; }
+.exam-tag { font-weight: bold; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; display: block; margin-bottom: 5px; }
 
 .card-part { padding: 30px; border-radius: 12px; text-align: center; font-size: 1.1rem; margin-bottom: 12px; border-left: 8px solid transparent; }
 .front-part { background: var(--accent); color: white; border-left-color: #2980b9; }
@@ -46,8 +30,5 @@ main { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
 .filter-btn { padding: 6px 12px; border: 2px solid var(--accent); background: transparent; color: var(--text); border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold; }
 .filter-btn.active { background: var(--accent); color: white; }
 
-.flash-controls { display: flex; flex-direction: column; gap: 10px; }
 .primary-btn { background: var(--accent); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-.next-btn { background: #34495e !important; }
-.shuffle-btn { background: #8e44ad !important; }
 small { display: block; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; opacity: 0.8; }
