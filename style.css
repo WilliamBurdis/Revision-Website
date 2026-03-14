@@ -1,35 +1,71 @@
-/* --- UPDATED FLASHCARD LAYOUT --- */
+/* --- BULLETPROOF FLASHCARD LAYOUT --- */
 #v-flash {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the card and button */
-    gap: 20px;           /* Puts a clean gap between card and button */
+    align-items: center;
+    width: 100%;
+    /* This ensures there is space at the bottom for the button */
+    padding-bottom: 30px; 
 }
 
 .card-container {
     perspective: 1000px;
     width: 100%;
-    max-width: 400px;   /* Prevents it from getting too huge */
-    height: 250px;      /* Fixed height for the card */
-    cursor: pointer;
-    position: relative; /* Keeps it in the document flow */
-    margin-bottom: 10px;
+    max-width: 400px;
+    /* We use min-height so it can grow if the text is long */
+    min-height: 250px; 
+    margin-bottom: 25px; /* Forced physical space below the card */
+    position: relative;
 }
 
 #card {
     width: 100%;
-    height: 100%;
+    min-height: 250px;
     position: relative;
     transform-style: preserve-3d;
-    transition: 0.6s;
+    transition: transform 0.6s;
 }
 
-/* Ensure the button is a block and has high visibility */
+#card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Fills the container */
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 25px; /* Keeps text away from edges */
+    box-sizing: border-box; /* Crucial for padding to work */
+    text-align: center;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* This prevents text from leaking out */
+    overflow-y: auto; 
+}
+
+.front {
+    background: var(--accent);
+    color: white;
+}
+
+.back {
+    background: #27ae60;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* THE BUTTON */
 #v-flash .primary-btn {
     width: 100%;
     max-width: 400px;
     padding: 15px;
+    cursor: pointer;
     font-size: 1.1rem;
-    z-index: 10;        /* Pulls the button to the front */
-    position: relative;
+    /* This ensures it sits below the card in the stack */
+    margin-top: auto; 
 }
