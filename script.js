@@ -1,45 +1,88 @@
 const database = {
     eng: { 
-        title: "English Eduqas Prep", 
-        notes: `
-            <h3>Eduqas Component 2: Practice</h3>
-            <div class="exam-box"><span class="exam-tag">Comparison 10-Marker</span><b>Q:</b> Compare the writers' views on education in Text A and Text B.</div>
-            <div class="exam-box"><span class="exam-tag">Transactional Writing</span><b>Task:</b> Write a formal letter to your MP about local pollution.</div>
-        `, 
+        title: "English Eduqas", 
+        notes: `<h3>Notes</h3><p>Focus on 19th/21st Century Comparison.</p>
+                <h3>Exam Prep</h3>
+                <div class="exam-box"><span class="exam-tag">10-Marker</span><b>Q:</b> Compare how the writers convey their childhood experiences.</div>`, 
         file: "english.md" 
     },
+    math: { 
+        title: "Mathematics", 
+        notes: `<h3>Notes</h3><p>Algebra, Ratio, and Geometry fundamentals.</p>
+                <h3>Exam Prep</h3>
+                <div class="exam-box"><span class="exam-tag">Calculation</span><b>Q:</b> Solve $2x^2 + 5x - 3 = 0$ using the quadratic formula.</div>`, 
+        file: "maths.md" 
+    },
     sci: { 
-        title: "Combined Science (Edexcel)", 
-        notes: `
-            <h3>Edexcel Exam Questions</h3>
-            <div class="exam-box"><span class="exam-tag">Bio: Microscopy</span><b>Q:</b> Describe how to use a light microscope to observe cells. (6 marks)</div>
-            <div class="exam-box"><span class="exam-tag">Chem: Titration</span><b>Q:</b> Describe the steps to perform an accurate titration. (6 marks)</div>
-            <div class="exam-box"><span class="exam-tag">Phys: Radioactivity</span><b>Q:</b> Explain how the atomic model changed from Dalton to Bohr. (6 marks)</div>
-        `, 
+        title: "Combined Science", 
+        notes: `<h3>Notes</h3><p>Edexcel Bio, Chem, Phys specifications.</p>
+                <h3>Exam Prep</h3>
+                <div class="exam-box"><span class="exam-tag">6-Marker</span><b>Q:</b> Explain the process of fractional distillation in crude oil.</div>`, 
         file: "science.md" 
     },
     hist: { 
-        title: "OCR B History", 
+        title: "OCR B History Suite", 
         notes: `
-            <h3>OCR B Key Topics</h3>
-            <p>Topics included: The Normans, The Vikings, Nazi Germany, and Crime & Punishment.</p>
-            <div class="exam-box"><span class="exam-tag">History Skill</span><b>Tip:</b> Always use the "PEEL" structure for 9-mark and 18-mark questions.</div>
+            <div class="history-container">
+                <section>
+                    <h3>🏷️ Nazis: The Rise and Rule</h3>
+                    <p>Focus: Impact of the Depression, Enabling Act, and Gleichschaltung.</p>
+                    <div class="exam-box"><span class="exam-tag">7-Marker</span><b>Q:</b> Explain why the Nazi party had limited appeal before 1929.</div>
+                </section>
+                <section>
+                    <h3>🏰 History Around Us</h3>
+                    <p>Focus: Site analysis, physical remains, and historical significance.</p>
+                    <div class="exam-box"><span class="exam-tag">20-Marker</span><b>Q:</b> How far do the remains of your site reveal its importance?</div>
+                </section>
+                <section>
+                    <h3>🛡️ Vikings: Expansion</h3>
+                    <p>Focus: Reasons for raids, Danelaw, and Alfred the Great.</p>
+                    <div class="exam-box"><span class="exam-tag">18-Marker</span><b>Q:</b> 'Viking raids were motivated only by wealth.' Discuss.</div>
+                </section>
+                <section>
+                    <h3>⚔️ Normans: Conquest</h3>
+                    <p>Focus: Hastings, The Feudal System, and the Domesday Book.</p>
+                    <div class="exam-box"><span class="exam-tag">9-Marker</span><b>Q:</b> Explain how the Normans used castles to control England.</div>
+                </section>
+                <section>
+                    <h3>⚖️ Crime and Punishment</h3>
+                    <p>Focus: The Bloody Code, Law Enforcement, and Prison Reform.</p>
+                    <div class="exam-box"><span class="exam-tag">18-Marker</span><b>Q:</b> How far did punishment change between 1500 and 1900?</div>
+                </section>
+            </div>
         `, 
         file: "history.md" 
     },
-    math: { title: "Mathematics", notes: "Algebra, Number, and Geometry.", file: "maths.md" },
-    geo: { title: "Geography", notes: "Natural Hazards, Urban Issues, UK Landscapes.", file: "geography.md" },
-    span: { title: "Spanish", notes: "Identity, Culture, Holidays, and Study.", file: "spanish.md" },
-    dra: { title: "Drama", notes: "Blood Brothers, DNA, Live Theatre Review.", file: "drama.md" },
-    art: { title: "Art", notes: "Portfolio, Artist Analysis, Media Skills.", file: "art.md" },
-    mus: { title: "Music", notes: "Set Works, Dictation, Composition.", file: "music.md" },
-    cs: { title: "Computer Science", notes: "Algorithms, Data Representation, Cyber Security.", file: "cs.md" },
-    it: { title: "IT", notes: "User Interfaces, Spreadsheets, Digital Systems.", file: "it.md" },
-    rs: { title: "RS", notes: "Christianity, Islam, Ethics & Relationships.", file: "rs.md" },
-    food: { title: "Food & Nutrition", notes: "Nutrition, Food Safety, Science of Cooking.", file: "food.md" },
-    biz: { title: "Business", notes: "Enterprise, Marketing, Finance, HR.", file: "business.md" },
-    sport: { title: "Sport", notes: "Anatomy, Physiology, Fitness Training.", file: "sport.md" },
-    cit: { title: "Citizenship", notes: "Democracy, Justice, Global Citizenship.", file: "citizenship.md" }
+    geo: { 
+        title: "Geography", 
+        notes: `<h3>Notes</h3><p>Physical and Human Geography.</p>
+                <h3>Exam Prep</h3>
+                <div class="exam-box"><span class="exam-tag">8-Marker</span><b>Q:</b> Assess the effectiveness of responses to a tectonic hazard.</div>`, 
+        file: "geography.md" 
+    },
+    span: { 
+        title: "Spanish", 
+        notes: `<h3>Notes</h3><p>Tenses and Identity/Culture vocab.</p>
+                <h3>Exam Prep</h3>
+                <div class="exam-box"><span class="exam-tag">Writing</span><b>Task:</b> Describe your last holiday using three tenses.</div>`, 
+        file: "spanish.md" 
+    },
+    dra: { 
+        title: "Drama", 
+        notes: `<h3>Notes</h3><p>Performance and Design elements.</p>
+                <h3>Exam Prep</h3>
+                <div class="exam-box"><span class="exam-tag">Design</span><b>Q:</b> Describe your costume ideas for Mickey in Blood Brothers.</div>`, 
+        file: "drama.md" 
+    },
+    art: { title: "Art", notes: `<h3>Notes</h3><p>Portfolio and Analysis.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Analysis</span><b>Task:</b> Explain artist influence.</div>`, file: "art.md" },
+    mus: { title: "Music", notes: `<h3>Notes</h3><p>Theory & Set Works.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Theory</span><b>Q:</b> Identify Baroque features.</div>`, file: "music.md" },
+    cs: { title: "Comp Sci", notes: `<h3>Notes</h3><p>Algorithms & Systems.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Coding</span><b>Q:</b> Write a Binary Search.</div>`, file: "cs.md" },
+    it: { title: "IT", notes: `<h3>Notes</h3><p>Apps & Systems.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">UX</span><b>Q:</b> Discuss accessibility.</div>`, file: "it.md" },
+    rs: { title: "RS", notes: `<h3>Notes</h3><p>Ethics & Religion.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">12-Marker</span><b>Q:</b> Evaluate war ethics.</div>`, file: "rs.md" },
+    food: { title: "Food Tech", notes: `<h3>Notes</h3><p>Nutrition & Prep.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Science</span><b>Q:</b> Explain gluten function.</div>`, file: "food.md" },
+    biz: { title: "Business", notes: `<h3>Notes</h3><p>Marketing & Finance.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Finance</span><b>Q:</b> Calculate Break-even.</div>`, file: "business.md" },
+    sport: { title: "Sport", notes: `<h3>Notes</h3><p>Anatomy & Fitness.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Anatomy</span><b>Q:</b> Describe the respiratory pathway.</div>`, file: "sport.md" },
+    cit: { title: "Citizenship", notes: `<h3>Notes</h3><p>Law & Politics.</p><h3>Exam Prep</h3><div class="exam-box"><span class="exam-tag">Politics</span><b>Q:</b> Role of House of Lords.</div>`, file: "citizenship.md" }
 };
 
 let allFlashcards = [];
