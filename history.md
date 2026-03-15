@@ -1,9 +1,21 @@
 # NORMANS
-Q: What was the 'Harrying of the North'?
-A: Campaigns by William (1069–70) to stop rebellions by destroying crops and livestock.
-Q: What was the purpose of the Domesday Book?
-A: To assess England's wealth for taxation and control.
 
+Q: What Is the Anglo Saxon Hierarchal structure?
+A: Thralls-->Ceorls-->Thegns-->Earls-->King
+Q: What was Anglo Saxon Society Split into?
+A: Shires
+Q:What was the name of an Anglo Saxon fortified town?
+A: Burh
+Q: What were the 2 main roles of the Whitan
+A: Choosing a successor/advising the King
+Q:Which Earl was a threat to Edward
+A: Godwin
+Q: Name 3 reasons the pope didn't like the Anglo-Saxons
+A:Made their own saints, not writing the bible in Latin, Binge Drinking , Adultery
+Q:
+A: 
+Q: 
+A: 
 # VIKINGS
 Q: What was the 'Danelaw'?
 A: Area of England where Viking laws/customs were dominant.
