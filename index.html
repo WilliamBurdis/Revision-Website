@@ -10,7 +10,7 @@
 
 <nav>
     <div class="logo">GradeForge</div>
-    <button class="primary-btn" onclick="toggleTheme()" id="theme-toggle">🌙 Dark Mode</button>
+    <button class="primary-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
 </nav>
 
 <main id="app">
@@ -70,8 +70,8 @@
 
             <div class="flash-controls">
                 <button class="primary-btn" id="reveal-btn" onclick="toggleAnswer()">Show Answer</button>
-                <button class="primary-btn next-btn" onclick="handleNextCard()">Next Card →</button>
-                <button class="primary-btn shuffle-btn" onclick="shuffleCurrentDeck()">🔀 Shuffle Deck</button>
+                <button class="primary-btn" onclick="handleNextCard()">Next Card →</button>
+                <button class="primary-btn" onclick="shuffleCurrentDeck()" style="background:#8e44ad">🔀 Shuffle</button>
             </div>
         </div>
     </section>
