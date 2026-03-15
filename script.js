@@ -45,7 +45,11 @@ const database = {
                 </section>
                 <section>
                     <h3>⚔️ Normans: Conquest and Control</h3>
-                    <p>Notes: Focus on the Battle of Hastings and the Feudal System.</p>
+                    <p>Notes: ---The Anglo Saxons--- 
+                    This is recognised as a golden age by many historians as it was seen as idylic, there was no war, they lived rurally and it was peaceful. 
+                    The society was structured: Thralls-->Ceorl-->Thegns-->Earls-->King
+                    All of the Earls were a member of the Whitan, they had no indevidual power but they could challenge a weak king
+                    In 1051 Edward the Confessor attempted to exile Godwin The Earl of Wessex, however Godwin returned with military backing and forced Edward to reintstate him, this highlights the Kings dependence on his nobles</p>
                     <div class="exam-box"><span class="exam-tag">Normans</span><b>Q:</b> Explain how the Normans used castles to control England. (9 marks)</div>
                 </section>
                 <section>
