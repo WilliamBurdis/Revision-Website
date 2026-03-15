@@ -1,43 +1,28 @@
 const database = {
     eng: { 
         title: "English Eduqas", 
-        notes: `<h3>Notes</h3><p>Focus on 19th and 21st Century Comparison.</p><hr><h3>Exam Questions</h3><div class="exam-box"><b>Q:</b> Compare how the writers convey their attitudes. (10 marks)</div>`, 
+        notes: `<h3>Notes</h3><p>Focus on Comparison skills.</p><hr><h3>Exam Questions</h3><div class="exam-box"><b>Q:</b> Compare the writers' attitudes in Text A and B.</div>`, 
         file: "english.md" 
     },
     math: { 
         title: "Mathematics", 
-        notes: `<h3>Notes</h3><p>Practice Algebra and Geometry.</p><hr><h3>Exam Questions</h3><div class="exam-box"><b>Q:</b> Solve $3x + y = 13$ and $x - y = 3$.</div>`, 
+        notes: `<h3>Notes</h3><p>Algebra and Geometry.</p><hr><h3>Exam Questions</h3><div class="exam-box"><b>Q:</b> Solve $3x + y = 13$ and $x - y = 3$.</div>`, 
         file: "maths.md" 
     },
     sci: { 
         title: "Combined Science", 
-        notes: `<h3>Notes</h3><p>Edexcel Bio, Chem, Phys.</p><hr><h3>Exam Questions</h3><div class="exam-box"><b>Q:</b> Explain the test for chlorine gas. (2 marks)</div>`, 
+        notes: `<h3>Notes</h3><p>Edexcel Combined Science.</p><hr><h3>Exam Questions</h3><div class="exam-box"><b>Q:</b> Explain the test for chlorine gas.</div>`, 
         file: "science.md" 
     },
     hist: { 
         title: "OCR B History Suite", 
         notes: `
             <div class="history-container">
-                <section>
-                    <h3>🏷️ Nazis: The Rise and Rule</h3>
-                    <div class="exam-box"><b>Q:</b> Explain why the Nazis had limited appeal before 1929.</div>
-                </section>
-                <section>
-                    <h3>🏰 History Around Us</h3>
-                    <div class="exam-box"><b>Q:</b> How far do the remains reveal the site's importance?</div>
-                </section>
-                <section>
-                    <h3>🛡️ Vikings: Expansion</h3>
-                    <div class="exam-box"><b>Q:</b> 'Viking raids were motivated only by wealth.' Discuss.</div>
-                </section>
-                <section>
-                    <h3>⚔️ Normans: Conquest</h3>
-                    <div class="exam-box"><b>Q:</b> Explain how the Normans used castles to control England.</div>
-                </section>
-                <section>
-                    <h3>⚖️ Crime and Punishment</h3>
-                    <div class="exam-box"><b>Q:</b> How did punishment change between 1500 and 1900?</div>
-                </section>
+                <section><h3>🏷️ Nazis</h3><div class="exam-box"><b>Q:</b> Why did Nazis have limited appeal before 1929?</div></section>
+                <section><h3>🏰 History Around Us</h3><div class="exam-box"><b>Q:</b> How do remains reveal site importance?</div></section>
+                <section><h3>🛡️ Vikings</h3><div class="exam-box"><b>Q:</b> Were Viking raids only for wealth?</div></section>
+                <section><h3>⚔️ Normans</h3><div class="exam-box"><b>Q:</b> How did castles help control England?</div></section>
+                <section><h3>⚖️ Crime and Punishment</h3><div class="exam-box"><b>Q:</b> How did punishment change 1500-1900?</div></section>
             </div>`, 
         file: "history.md" 
     },
@@ -62,9 +47,14 @@ let fIdx = 0;
 function toggleTheme() { document.body.classList.toggle('dark'); }
 
 function setTab(type) {
-    document.getElementById('v-notes').classList.add('hidden');
-    document.getElementById('v-flash').classList.add('hidden');
+    const notesView = document.getElementById('v-notes');
+    const flashView = document.getElementById('v-flash');
+    if(!notesView || !flashView) return;
+
+    notesView.classList.add('hidden');
+    flashView.classList.add('hidden');
     document.getElementById('v-' + type).classList.remove('hidden');
+    
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('t-' + type).classList.add('active');
 }
@@ -103,17 +93,19 @@ async function loadSubject(key) {
                 tempQ = "";
             }
         });
-
         filteredCards = [...allFlashcards];
         updateFlashcardUI();
     } catch (e) { 
-        document.getElementById('f-front').innerText = "Create " + sub.file + " to see cards."; 
+        console.log("No markdown file found for " + key);
     }
 }
 
 function updateFlashcardUI() {
+    const front = document.getElementById('f-front');
+    if (!front) return;
+    
     if (!filteredCards.length) {
-        document.getElementById('f-front').innerText = "No cards found.";
+        front.innerText = "No cards found.";
         document.getElementById('f-back-wrapper').style.display = 'none';
         return;
     }
@@ -121,7 +113,7 @@ function updateFlashcardUI() {
     document.getElementById('reveal-btn').innerText = "Show Answer";
     const card = filteredCards[fIdx];
     document.getElementById('f-topic').innerText = card.topic + " - QUESTION";
-    document.getElementById('f-front').innerText = card.q;
+    front.innerText = card.q;
     document.getElementById('f-back').innerText = card.a;
 }
 
@@ -136,24 +128,6 @@ function toggleAnswer() {
 function handleNextCard() {
     if (!filteredCards.length) return;
     fIdx = (fIdx + 1) % filteredCards.length;
-    updateFlashcardUI();
-}
-
-function shuffleCurrentDeck() {
-    for (let i = filteredCards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
-    }
-    fIdx = 0;
-    updateFlashcardUI();
-}
-
-function filterCards(category) {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toUpperCase() === category || (category === 'ALL' && btn.innerText === 'All'));
-    });
-    filteredCards = (category === 'ALL') ? [...allFlashcards] : allFlashcards.filter(c => c.topic.includes(category));
-    fIdx = 0;
     updateFlashcardUI();
 }
 
