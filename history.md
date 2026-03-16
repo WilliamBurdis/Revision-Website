@@ -11,8 +11,22 @@ A: Choosing a successor/advising the King
 Q:Which Earl was a threat to Edward
 A: Godwin
 Q: Name 3 reasons the pope didn't like the Anglo-Saxons
-A:Made their own saints, not writing the bible in Latin, Binge Drinking , Adultery
-Q:
+A:Made their own saints, not writing the bible in Latin, Binge Drinking , Adultery, beliefs in Witchcraft
+Q:Who was the Arch Bishop of Canterbury in Anlgo-SAxon England
+A: Stigand
+Q: Name 2 pieces of literature from Anglo-Saxon England
+A: Beowulf,Marvels of the East, Anglo-Saxon Chronicle, Exeter Book
+Q: 
+A: 
+Q: 
+A: 
+Q: 
+A: 
+Q: 
+A: 
+Q: 
+A: 
+Q: 
 A: 
 Q: 
 A: 
