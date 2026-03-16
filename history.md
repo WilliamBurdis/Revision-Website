@@ -2,7 +2,7 @@
 
 Q: What Is the Anglo Saxon Hierarchal structure?
 A: Thralls-->Ceorls-->Thegns-->Earls-->King
-Q: What was Anglo Saxon Society Split into?
+Q: What was Anglo-Saxon England Split into?
 A: Shires
 Q:What was the name of an Anglo Saxon fortified town?
 A: Burh
@@ -16,17 +16,17 @@ Q:Who was the Arch Bishop of Canterbury in Anlgo-SAxon England
 A: Stigand
 Q: Name 2 pieces of literature from Anglo-Saxon England
 A: Beowulf,Marvels of the East, Anglo-Saxon Chronicle, Exeter Book
-Q: 
-A: 
-Q: 
-A: 
-Q: 
-A: 
-Q: 
-A: 
-Q: 
-A: 
-Q: 
+Q: Who were the 4 successors to the throne in 1066
+A: William of Normandy, Harald Hardrada, Harold Godwinson, Edgar the Aethling
+Q: Describe the Fuedal System
+A: Land is owned by the King but split up into Fiefs and controlled by Dukes/Lords
+Q: Why did the Pope like Normandy
+A: Well Educated Monks, Finely built monastries, Modern and Beautiful churches
+Q: What was Harolds Claim to the throne
+A: Earl of Wessex, chosen by the Whitan
+Q: What was Haralds claim to the throne
+A: His father was promised the throne
+Q: What was Williams claim to the throne
 A: 
 Q: 
 A: 
