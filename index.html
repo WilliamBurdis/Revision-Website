@@ -50,17 +50,17 @@
         </div>
 
         <div id="v-flash" class="content-box hidden">
-            <div id="flash-filters" class="filter-group hidden">
-                <button class="filter-btn active" onclick="filterCards('ALL')">All</button>
-                <button class="filter-btn" onclick="filterCards('BIOLOGY')">Bio</button>
-                <button class="filter-btn" onclick="filterCards('CHEMISTRY')">Chem</button>
-                <button class="filter-btn" onclick="filterCards('PHYSICS')">Phys</button>
+            <div class="filter-group">
+                <button class="filter-btn active" id="btn-all" onclick="filterCards('ALL')">All Cards</button>
+                <button class="filter-btn rag-red" onclick="filterByRag('red')">🔴 Red</button>
+                <button class="filter-btn rag-amber" onclick="filterByRag('amber')">🟠 Amber</button>
+                <button class="filter-btn rag-green" onclick="filterByRag('green')">🟢 Green</button>
             </div>
 
             <div class="flashcard-box">
-                <div class="card-part front-part">
+                <div id="f-card-container" class="card-part front-part">
                     <small id="f-topic">QUESTION</small>
-                    <div id="f-front">Loading cards...</div>
+                    <div id="f-front">Loading...</div>
                 </div>
                 <div class="card-part back-part" id="f-back-wrapper" style="display:none;">
                     <small>ANSWER</small>
@@ -68,10 +68,19 @@
                 </div>
             </div>
 
-            <div class="flash-controls">
+            <div class="rag-controls">
+                <p style="text-align:center; font-size: 0.8rem; margin: 10px 0 5px 0;">Rate Confidence:</p>
+                <div style="display: flex; gap: 5px;">
+                    <button class="primary-btn" onclick="rateCard('red')" style="background:#e74c3c; flex:1;">Red</button>
+                    <button class="primary-btn" onclick="rateCard('amber')" style="background:#f39c12; flex:1;">Amber</button>
+                    <button class="primary-btn" onclick="rateCard('green')" style="background:#27ae60; flex:1;">Green</button>
+                </div>
+            </div>
+
+            <div class="flash-controls" style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
                 <button class="primary-btn" id="reveal-btn" onclick="toggleAnswer()">Show Answer</button>
                 <button class="primary-btn" onclick="handleNextCard()">Next Card →</button>
-                <button class="primary-btn" onclick="shuffleCurrentDeck()" style="background:#8e44ad">🔀 Shuffle</button>
+                <button class="primary-btn" onclick="resetAllRatings()" style="background:#7f8c8d; font-size: 0.7rem; padding: 5px;">Reset All Ratings</button>
             </div>
         </div>
     </section>
