@@ -12,24 +12,48 @@ Q:Which Earl was a threat to Edward
 A: Godwin
 Q: Name 3 reasons the pope didn't like the Anglo-Saxons
 A:Made their own saints, not writing the bible in Latin, Binge Drinking , Adultery, beliefs in Witchcraft
-Q:Who was the Arch Bishop of Canterbury in Anlgo-SAxon England
+Q:Who was the Arch Bishop of Canterbury in Anlgo-Saxon England?
 A: Stigand
 Q: Name 2 pieces of literature from Anglo-Saxon England
 A: Beowulf,Marvels of the East, Anglo-Saxon Chronicle, Exeter Book
-Q: Who were the 4 successors to the throne in 1066
+Q: Who were the 4 successors to the throne in 1066?
 A: William of Normandy, Harald Hardrada, Harold Godwinson, Edgar the Aethling
-Q: Describe the Fuedal System
+Q: Describe the Fuedal System?
 A: Land is owned by the King but split up into Fiefs and controlled by Dukes/Lords
-Q: Why did the Pope like Normandy
+Q: Why did the Pope like Normandy?
 A: Well Educated Monks, Finely built monastries, Modern and Beautiful churches
-Q: What was Harolds Claim to the throne
+Q: What was Harolds Claim to the throne?
 A: Earl of Wessex, chosen by the Whitan
-Q: What was Haralds claim to the throne
+Q: What was Haralds claim to the throne?
 A: His father was promised the throne
-Q: What was Williams claim to the throne
-A: 
-Q: 
-A: 
+Q: What was Williams claim to the throne?
+A: Promised by Edward (he swore an oath)
+Q: What was Edgars claim?
+A: Closest direct descendant to Edward
+Q: How did William prepare for invasion?
+A: Papal Banner, Shipbuilding, Alliances (flemish, brittany), gathered an army,
+Q:How did Harald Prepare for invasion?
+A: Gathered a Fyrd
+Q: What battles did Harald fight in England?
+A:Battle of Fulford and Stamford Bridge
+Q:Who won the Battle of Hastings?
+A:William of Normandy
+Q:Who was put in charge of England after the norman invasion?
+A: William Fitz Osbern
+Q:Which Earls submitted to William
+A:Edgar, Edwin, Morcar
+Q:
+A:
+Q:
+A:
+Q:
+A:
+Q:
+A:
+Q:
+A:
+Q:
+A:
 # VIKINGS
 Q: What was the 'Danelaw'?
 A: Area of England where Viking laws/customs were dominant.
