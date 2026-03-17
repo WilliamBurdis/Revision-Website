@@ -12,7 +12,7 @@ Q:Which Earl was a threat to Edward
 A: Godwin
 Q: Name 3 reasons the pope didn't like the Anglo-Saxons
 A:Made their own saints, not writing the bible in Latin, Binge Drinking , Adultery, beliefs in Witchcraft
-Q:Who was the Arch Bishop of Canterbury in Anlgo-Saxon England?
+Q:Who was the Arch Bishop of Canterbury in Anglo-Saxon England?
 A: Stigand
 Q: Name 2 pieces of literature from Anglo-Saxon England
 A: Beowulf,Marvels of the East, Anglo-Saxon Chronicle, Exeter Book
@@ -42,17 +42,17 @@ Q:Who was put in charge of England after the norman invasion?
 A: William Fitz Osbern
 Q:Which Earls submitted to William
 A:Edgar, Edwin, Morcar
-Q:
-A:
-Q:
-A:
-Q:
-A:
-Q:
-A:
-Q:
-A:
-Q:
+Q:Why did the Northern rebellions happen?
+A:Heavy Norman Control, Anglo-Saxon Earls losing power, High Taxes, Harsh Rules
+Q: What occured in the Harrying of the North?
+A: 100,000+ deaths, destroyed crops and villages, killed livestock
+Q:why did the Ely rebillion happen?
+A:Norman Abbott was installed, land was taken, 
+Q: Why did Herewad rebel?
+A:His fathers land was taken, His family was murdered
+Q:Why did Edric the Wild Rebel?
+A:Lost land and power, heavy treatment, high taxation
+Q:What happened in Edric the Wilds rebellion
 A:
 # VIKINGS
 Q: What was the 'Danelaw'?
