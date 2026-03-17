@@ -53,6 +53,28 @@ A:His fathers land was taken, His family was murdered
 Q:Why did Edric the Wild Rebel?
 A:Lost land and power, heavy treatment, high taxation
 Q:What happened in Edric the Wilds rebellion
+A:Raided Norman Castles (mostly along the Welsh border)
+Q:What were the outcomes of Edrics rebellion?
+A:Exposed vulnerabilities of Norman rule, William strengthened castles
+Q:Why did the Exeter rebellions happen?
+A:Land confiscation, Taxation, Gytha Godwinsons power
+Q:What happened in the Exeter rebellions?
+A:Refusal to pay taxes, people refused to swear an oath (this was William showing mercy)
+Q:What were the outcomes of the Exeter rebellions?
+A:Rougemont Castle was built, discourged other rebellions, showed William can be merciful
+Q: What types of castles did the Normans build?
+A:Motte and Bailey
+Q:What were some of the first castles William Built?
+A:Pevensey, Hastings, Tower of London etc
+Q:Summarise Castles from 1066-71
+A:Many Royal Castles were built in places like Exeter, warwick and York to maintain control, Made of wood, over 35 castles by 1071
+Q:Summarise Castles from 1071-87
+A:Were built to settle and manage the lands, larger castles were built out of stone, by 1087 there were 500+ castles
+Q:How many castles were estimated to have been built by 1150
+A: 1000+
+Q:
+A:
+Q:
 A:
 # VIKINGS
 Q: What was the 'Danelaw'?
