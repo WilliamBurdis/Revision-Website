@@ -17,9 +17,6 @@ main { max-width: 900px; margin: 20px auto; padding: 0 20px; }
 .content-box { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid var(--border); }
 .exam-box { background: rgba(52, 152, 219, 0.1); border-left: 5px solid var(--accent); padding: 15px; margin: 15px 0; border-radius: 5px; }
 
-.history-container section { background: rgba(0,0,0,0.03); padding: 10px; border-radius: 8px; margin-bottom: 15px; }
-body.dark .history-container section { background: rgba(255,255,255,0.05); }
-
 .filter-group { display: flex; gap: 5px; margin-bottom: 15px; flex-wrap: wrap; justify-content: center; }
 .filter-btn { padding: 8px 12px; border: 1px solid var(--accent); background: transparent; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold; color: var(--text); }
 .filter-btn.active { background: var(--accent); color: white; }
@@ -32,8 +29,8 @@ body.dark .history-container section { background: rgba(255,255,255,0.05); }
 .filter-btn.active.rag-green { background: #27ae60; color: white; }
 
 .card-part { padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 10px; }
-.front-part { background: var(--accent); color: white; border-bottom: 10px solid #ccc; }
+.front-part { background: var(--accent); color: white; border-bottom: 10px solid #ccc; transition: border-color 0.2s; }
 .back-part { background: #2c3e50; color: white; margin-top: 10px; }
 
-.primary-btn { background: var(--accent); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-hr { border: 0; height: 1px; background: var(--border); margin: 20px 0; }
+.primary-btn { background: var(--accent); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: opacity 0.2s; }
+.primary-btn:active { opacity: 0.7; }
