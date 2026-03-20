@@ -1,19 +1,8 @@
 const database = {
-    eng: { title: "English Eduqas", notes: "<h3>Notes</h3><p>Focus on comparison.</p><hr><h3>Exam Questions</h3><div class='exam-box'><b>Q:</b> Compare attitudes in Text A and B.</div>", file: "english.md" },
-    math: { title: "Mathematics", notes: "<h3>Notes</h3><p>Algebra and Geometry.</p><hr><h3>Exam Questions</h3><div class='exam-box'><b>Q:</b> Solve for X.</div>", file: "maths.md" },
-    sci: { title: "Combined Science", notes: "<h3>Notes</h3><p>Edexcel Combined.</p><hr><h3>Exam Questions</h3><div class='exam-box'><b>Q:</b> Test for Chlorine.</div>", file: "science.md" },
-    hist: { 
-        title: "OCR B History Suite", 
-        notes: `
-            <div class="history-container">
-                <section><h3>🏷️ Nazis</h3><div class='exam-box'><b>Q:</b> Nazi appeal 1929?</div></section>
-                <section><h3>🏰 History Around Us</h3><div class='exam-box'><b>Q:</b> Site remains?</div></section>
-                <section><h3>🛡️ Vikings</h3><div class='exam-box'><b>Q:</b> Viking motivations?</div></section>
-                <section><h3>⚔️ Normans</h3><div class='exam-box'><b>Q:</b> Castle control?</div></section>
-                <section><h3>⚖️ Crime & Punishment</h3><div class='exam-box'><b>Q:</b> 1500-1900 changes?</div></section>
-            </div>`, 
-        file: "history.md" 
-    },
+    eng: { title: "English Eduqas", notes: "<h3>Notes</h3><p>Focus on comparison.</p>", file: "english.md" },
+    math: { title: "Mathematics", notes: "<h3>Notes</h3><p>Algebra and Geometry.</p>", file: "maths.md" },
+    sci: { title: "Combined Science", notes: "<h3>Notes</h3><p>Edexcel Combined Science.</p>", file: "science.md" },
+    hist: { title: "OCR B History", notes: "<h3>Notes</h3><p>Nazis, Normans, Vikings, Crime & Punishment.</p>", file: "history.md" },
     geo: { title: "Geography", notes: "Notes here.", file: "geo.md" },
     span: { title: "Spanish", notes: "Notes here.", file: "span.md" },
     dra: { title: "Drama", notes: "Notes here.", file: "dra.md" },
@@ -47,6 +36,7 @@ function setTab(type) {
     document.getElementById('t-' + type).classList.add('active');
 }
 
+// RAG LOGIC
 function getRagStatus(cardQ) {
     const saved = localStorage.getItem('gradeforge_rag');
     const ragData = saved ? JSON.parse(saved) : {};
@@ -58,21 +48,29 @@ function rateCard(color) {
     const card = filteredCards[fIdx];
     const saved = localStorage.getItem('gradeforge_rag');
     const ragData = saved ? JSON.parse(saved) : {};
+    
     ragData[card.q] = color;
     localStorage.setItem('gradeforge_rag', JSON.stringify(ragData));
+    
     updateFlashcardUI();
+
+    // AUTO-NEXT: 150ms delay for visual feedback
+    setTimeout(() => {
+        handleNextCard();
+    }, 150);
 }
 
 function resetAllRatings() {
-    if (confirm("Reset all color ratings?")) {
+    if (confirm("Reset all color ratings? This cannot be undone.")) {
         localStorage.removeItem('gradeforge_rag');
         updateFlashcardUI();
     }
 }
 
+// FILTERING
 function filterByRag(color) {
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    if (event) event.target.classList.add('active');
     filteredCards = allFlashcards.filter(card => getRagStatus(card.q) === color);
     fIdx = 0;
     updateFlashcardUI();
@@ -88,6 +86,7 @@ function filterCards(type) {
     }
 }
 
+// DATA LOADING
 async function loadSubject(key) {
     const sub = database[key];
     if (!sub) return;
@@ -114,9 +113,10 @@ async function loadSubject(key) {
         });
         filteredCards = [...allFlashcards];
         updateFlashcardUI();
-    } catch (e) { console.log("File error"); }
+    } catch (e) { console.log("MD file not found."); }
 }
 
+// UI LOGIC
 function updateFlashcardUI() {
     const container = document.getElementById('f-card-container');
     if (!filteredCards.length) {
@@ -132,16 +132,27 @@ function updateFlashcardUI() {
     document.getElementById('f-topic').innerText = card.topic;
     document.getElementById('f-front').innerText = card.q;
     document.getElementById('f-back').innerText = card.a;
+    document.getElementById('reveal-btn').innerText = "Show Answer";
 }
 
 function toggleAnswer() {
     const w = document.getElementById('f-back-wrapper');
-    w.style.display = (w.style.display === 'none') ? 'block' : 'none';
+    const b = document.getElementById('reveal-btn');
+    const isHidden = w.style.display === 'none';
+    w.style.display = isHidden ? 'block' : 'none';
+    b.innerText = isHidden ? "Hide Answer" : "Show Answer";
 }
 
 function handleNextCard() {
     if (filteredCards.length > 0) {
         fIdx = (fIdx + 1) % filteredCards.length;
+        updateFlashcardUI();
+    }
+}
+
+function handlePrevCard() {
+    if (filteredCards.length > 0) {
+        fIdx = (fIdx - 1 + filteredCards.length) % filteredCards.length;
         updateFlashcardUI();
     }
 }
