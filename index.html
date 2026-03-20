@@ -77,9 +77,14 @@
                 </div>
             </div>
 
-            <div class="flash-controls" style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="flash-controls" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
                 <button class="primary-btn" id="reveal-btn" onclick="toggleAnswer()">Show Answer</button>
-                <button class="primary-btn" onclick="handleNextCard()">Next Card →</button>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button class="primary-btn" onclick="handlePrevCard()" style="flex: 1; background: #95a5a6;">← Previous</button>
+                    <button class="primary-btn" onclick="handleNextCard()" style="flex: 2;">Next Card →</button>
+                </div>
+
                 <button class="primary-btn" onclick="resetAllRatings()" style="background:#7f8c8d; font-size: 0.7rem; padding: 5px;">Reset All Ratings</button>
             </div>
         </div>
